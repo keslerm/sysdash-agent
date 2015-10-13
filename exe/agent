@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "server_console/agent"
+
+ServerConsole::Agent.run(ARGV[0], ARGV[1], ARGV[2])
