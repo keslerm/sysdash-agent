@@ -4,4 +4,6 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rest-client'
-gem 'sysinfo'
+gem 'ohai'
+gem 'sys-cpu'
+gem 'usagewatch'
