@@ -19,7 +19,7 @@ module ServerConsole
       # Load average
       cpu_usage = usw.uw_cpuused
 
-      RestClient.post "http://#{server}/server/heartbeat", {
+      RestClient.post "http://#{server}/heartbeat", {
                         'name' => name,
                         'token' => token,
 
