@@ -19,13 +19,22 @@ module ServerConsole
       # Load average
       cpu_usage = usw.uw_cpuused
 
+      # Memory usage
+      mem_total = system.data['memory']['total'].gsub('kB', '').to_i
+      mem_free = system.data['memory']['free'].gsub('kB', '').to_i + system.data['memory']['cached'].gsub('kB', '').to_i + system.data['memory']['buffers'].gsub('kB', '').to_i
+      mem_used = mem_total - mem_free
+
+
       RestClient.post "http://#{server}/heartbeat", {
                         'name' => name,
                         'token' => token,
 
                         # Stats
                         'uptime' => system.data['uptime'],
-                        'cpu_usage' => cpu_usage
+                        'cpu_usage' => cpu_usage,
+                        'mem_total' => mem_total,
+                        'mem_used' => mem_used
+
 
                       }.to_json, :content_type => :json, :accept => :json
 
