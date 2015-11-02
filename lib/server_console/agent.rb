@@ -25,7 +25,7 @@ module ServerConsole
       mem_used = mem_total - mem_free
 
 
-      RestClient.post "#{server}/heartbeat", {
+      RestClient.post "#{server}/events/heartbeat", {
                         'name' => name,
                         'token' => token,
 
