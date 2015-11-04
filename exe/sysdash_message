@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "server_console/agent"
+require "sysdash/agent"
 
 # Get data
 results = ''
@@ -10,4 +10,4 @@ $stdin.each do |line|
 end
 
 # Load config
-ServerConsole::Agent.message(ARGV[0], results)
+Sysdash::Agent.message(ARGV[0], results)

@@ -11,7 +11,7 @@ module Sysdash
   module Agent
     def self.run
 
-      config = YAML.load(File.open('~/.config/sysdash/config.yml'))
+      config = YAML.load(File.open(File.expand_path('~/.config/sysdash/config.yml')))
 
       system = Ohai::System.new
       system.all_plugins
@@ -44,7 +44,7 @@ module Sysdash
     end
 
     def self.message(subject, body)
-      config = YAML.load(File.open('.config.yml'))
+      config = YAML.load(File.open(File.expand_path('~/.config/sysdash/config.yml')))
 
       RestClient.post "#{config['host']}/events/message", {
           name: config['name'],
