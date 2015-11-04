@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe ServerConsole::Agent do
+describe Sysdash::Agent do
   it 'has a version number' do
-    expect(ServerConsole::Agent::VERSION).not_to be nil
+    expect(Sysdash::Agent::VERSION).not_to be nil
   end
 
   it 'does something useful' do

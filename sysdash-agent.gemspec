@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'server_console/agent/version'
+require 'sysdash/agent/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "server_console-agent"
-  spec.version       = ServerConsole::Agent::VERSION
+  spec.name          = "sysdash-agent"
+  spec.version       = Sysdash::Agent::VERSION
   spec.authors       = ["Morgan Kesler"]
   spec.email         = ["keslerm@dasbiersec.com"]
 
-  spec.summary       = "Agent for Server Console to report heartbeats and messages"
-  spec.description   = "Agent for Server Console to report heartbeats and messages"
-  spec.homepage      = "https://github.com/keslerm/server_console-agent"
+  spec.summary       = "Agent for Sysdash to report heartbeats and messages"
+  spec.description   = "Agent for Sysdash to report heartbeats and messages"
+  spec.homepage      = "https://github.com/keslerm/sysdash-agent"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

@@ -1,4 +1,4 @@
-require 'server_console/agent/version'
+require 'sysdash/agent/version'
 require 'json'
 require 'rest-client'
 require 'ohai'
@@ -7,11 +7,11 @@ require 'usagewatch'
 require 'yaml'
 
 # This is not gonna stay like this
-module ServerConsole
+module Sysdash
   module Agent
     def self.run
 
-      config = YAML.load(File.open('.config.yml'))
+      config = YAML.load(File.open('~/.config/sysdash/config.yml'))
 
       system = Ohai::System.new
       system.all_plugins
