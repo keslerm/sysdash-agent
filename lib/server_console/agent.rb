@@ -47,10 +47,10 @@ module ServerConsole
       config = YAML.load(File.open('.config.yml'))
 
       RestClient.post "#{config['host']}/events/message", {
-          'name': config['name'],
-          'token': config['token'],
-          'body': body,
-          'subject': subject
+          name: config['name'],
+          token: config['token'],
+          body: body,
+          subject: subject
       }.to_json, :content_type => :json, :accept => :json
     end
   end
