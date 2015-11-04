@@ -4,12 +4,14 @@ require 'rest-client'
 require 'ohai'
 require 'pp'
 require 'usagewatch'
-
+require 'yaml'
 
 # This is not gonna stay like this
 module ServerConsole
   module Agent
-    def self.run(server, name, token)
+    def self.run
+
+      config = YAML.load(File.open('.config.yml'))
 
       system = Ohai::System.new
       system.all_plugins
@@ -25,9 +27,9 @@ module ServerConsole
       mem_used = mem_total - mem_free
 
 
-      RestClient.post "#{server}/events/heartbeat", {
-                        'name' => name,
-                        'token' => token,
+      RestClient.post "#{config['host']}/events/heartbeat", {
+                        'name' => config['name'],
+                        'token' => config['token'],
 
                         # Stats
                         'uptime' => system.data['uptime'],
@@ -40,5 +42,17 @@ module ServerConsole
 
 
     end
+
+    def self.message(subject, message)
+      config = YAML.load(File.open('.config.yml'))
+
+      RestClient.post "#{config['host']}/events/message", {
+          'name': config['name'],
+          'token': config['token'],
+          'message': message,
+          'subject': subject
+      }.to_json, :content_type => :json, :accept => :json
+    end
   end
+
 end
